@@ -24,7 +24,7 @@ namespace BestRestaurants
     {
       services.AddMvc();
       services.AddEntityFrameworkMySql()
-        .AddDbContext<ToDoListContext>(options => options
+        .AddDbContext<BestRestaurantsContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
     }
 
@@ -41,7 +41,7 @@ namespace BestRestaurants
 
       app.Run(async (context) =>
       {
-        await context.Response.WriteAsync("Hello World!");
+        await context.Response.WriteAsync("Are you lost?");
       });
     }
   }
