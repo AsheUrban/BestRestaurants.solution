@@ -1,13 +1,19 @@
 @{
   Layout = "_Layout";
 }
-
+@using BestRestaurants.Models;
 @model BestRestaurants.Models.Cuisine
 
-<h2>Cuisine Details</h2>
+<h2>About @Html.DisplayFor(model => model.Type) Food</h2>
+<p>@Html.DisplayFor(model => model.Description)</p>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)<h3>
-<p>@Html.ActionLink("Add New Restaurant", "Create", "Restaurants")</p>
-<p>@Html.ActionLink("Edit Cuisine", "Edit", new { id = Model.CuisineId })</p>
-<p>@Html.ActionLink("Delete Cuisine", "Delete", new { id = Model.CuisineId })</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+
+@foreach (Restaurant restaurant in Model.Restaurants)
+{
+  <li>@Html.ActionLink($"{restaurant.Name}", "Details", "Restaurants", new { id = restaurant.RestaurantId })</li>
+}
+<hr />
+<p class="fancyBtn">@Html.ActionLink("Add New Restaurant", "Create", "Restaurants")</p>
+<p class="fancyBtn">@Html.ActionLink("Edit Cuisine", "Edit", new { id = Model.CuisineId })</p>
+<p class="fancyBtn">@Html.ActionLink("Delete Cuisine", "Delete", new { id = Model.CuisineId })</p>
+<p class="fancyBtn">@Html.ActionLink("Back to list", "Index")</p>

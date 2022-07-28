@@ -4,16 +4,15 @@
 
 @model BestRestaurants.Models.Cuisine
 
-<h4>Add a New Cuisine Type</h4>
+<h1>ADD A CUISINE TYPE</h1>
+<hr/>
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Type)
-  @Html.TextBoxFor(model => model.Type)
+  <span> | </span>  @Html.LabelFor(model => model.Type) <span> | </span> 
+  @Html.TextBoxFor(model => model.Type) <span> | </span> 
 
-  @Html.LabelFor(model => model.Description)
-  @Html.TextBoxFor(model => model.Description)
-
-  <input type="submit" value="Add New Cuisine Type" />
+  @Html.LabelFor(model => model.Description) <span> | </span> 
+  @Html.TextBoxFor(model => model.Description) <span> | </span> 
+<hr />
+  <input type="submit" value="ADD" />
 }
-
-<p>@Html.ActionLink("Show All Cuisine Types", "Index")</p>

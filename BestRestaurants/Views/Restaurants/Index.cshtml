@@ -5,7 +5,9 @@
 @using BestRestaurants.Models;
 @model List<BestRestaurants.Models.Restaurant>;
 
-<h1>Restaurants</h1>
+<h1>RESTAURANTS</h1>
+<hr />
+<div class="card">
 
 @if (@Model.Count == 0)
 {
@@ -16,7 +18,7 @@
 {
   <li>@Html.ActionLink($"{restaurant.Name}", "Details", new { id = restaurant.RestaurantId }) | @restaurant.Cuisine.Type</li>
 }
-
-<p>@Html.ActionLink("Add New Restaurant", "Create")</p>
-<p>@Html.ActionLink("Add new Cuisine", "Create")</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+</div>
+<hr />
+<p class="fancyBtn">@Html.ActionLink("Add Restaurant", "Create")</p>
+<p class="fancyBtn">@Html.ActionLink("Add Cuisine", "Create")</p>

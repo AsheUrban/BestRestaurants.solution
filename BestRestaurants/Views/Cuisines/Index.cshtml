@@ -4,7 +4,9 @@
 
 @using BestRestaurants.Models;
 
-<h1>Cuisines</h1>
+<h1>CUISINES</h1>
+<hr />
+<div class="card">
 
 @if (Model.Count == 0)
 {
@@ -18,6 +20,7 @@
   }
 </ul>
 
-<p>@Html.ActionLink("Add New Restaurant", "Create", "Restaurants")</p>
-<p>@Html.ActionLink("Add new Cuisine", "Create")</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+</div>
+<hr />
+<p class="fancyBtn">@Html.ActionLink("Add Restaurant", "Create", "Restaurants")</p>
+<p class="fancyBtn">@Html.ActionLink("Add Cuisine", "Create")</p>
