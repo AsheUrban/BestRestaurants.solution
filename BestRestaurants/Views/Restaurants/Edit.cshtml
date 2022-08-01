@@ -1,4 +1,4 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
@@ -14,12 +14,12 @@
   @Html.TextBoxFor(model => model.Name) <span> | </span> 
 
   @Html.LabelFor(model => model.Description) <span> | </span> 
-  @Html.EditorFor(model => model.Description) <span> | </span> 
+  @Html.TextBoxFor(model => model.Description) <span> | </span> 
 
-  @Html.LabelFor(model => model.Cuisine) <span> | </span> 
+  @Html.Label("Select Cuisine") <span> | </span> 
   @Html.DropDownList("CuisineId") <span> | </span> 
 <hr />
   <input type="submit" value="Save" />
 }
 
-<p class="fancyBtn">@Html.ActionLink("Back to Restaurants", "Index")</p> *@
+<p class="fancyBtn">@Html.ActionLink("Back to Restaurants", "Index")</p>
