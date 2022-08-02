@@ -1,0 +1,13 @@
+@{ 
+  Layout = "_Layout";
+  }
+
+@model BestRestaurants.Models.Diner
+
+<h1>Add Diner</h1>
+
+@using (Html.BeginForm())
+{
+@Html.LabelFor(model => model.DinerName)
+@Html.TextBoxFor(model => model.DinerName)
+}
