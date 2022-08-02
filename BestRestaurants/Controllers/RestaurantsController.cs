@@ -34,7 +34,7 @@ namespace BestRestaurants.Controllers
     _db.SaveChanges();
     if (CuisineId != 0)
     {
-        _db.Diner.Add(new Diner() { CuisineId = CuisineId, RestaurantId = restaurant.RestaurantId });
+        _db.Diners.Add(new Diner() { CuisineId = CuisineId, RestaurantId = restaurant.RestaurantId });
         _db.SaveChanges();
     }
     return RedirectToAction("Index");
@@ -61,7 +61,7 @@ namespace BestRestaurants.Controllers
     {
       if (CuisineId != 0)
       {
-      _db.Diner.Add(new Diner() { CuisineId = CuisineId, RestaurantId = restaurant.RestaurantId });
+      _db.Diners.Add(new Diner() { CuisineId = CuisineId, RestaurantId = restaurant.RestaurantId });
       }
     _db.Entry(restaurant).State = EntityState.Modified;
     _db.SaveChanges();
@@ -80,7 +80,7 @@ namespace BestRestaurants.Controllers
     {
     if (CuisineId != 0)
     {
-    _db.Diner.Add(new Diner() { CuisineId = CuisineId, RestaurantId = restaurant.RestaurantId });
+    _db.Diners.Add(new Diner() { CuisineId = CuisineId, RestaurantId = restaurant.RestaurantId });
     _db.SaveChanges();
     }
     return RedirectToAction("Index");
@@ -104,8 +104,8 @@ namespace BestRestaurants.Controllers
     [HttpPost]
     public ActionResult DeleteCuisine(int joinId)
     {
-    var joinEntry = _db.Diner.FirstOrDefault(entry => entry.DinerId == joinId);
-    _db.Diner.Remove(joinEntry);
+    var joinEntry = _db.Diners.FirstOrDefault(entry => entry.DinerId == joinId);
+    _db.Diners.Remove(joinEntry);
     _db.SaveChanges();
     return RedirectToAction("Index");
     }
