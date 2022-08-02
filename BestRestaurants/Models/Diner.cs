@@ -7,9 +7,8 @@ namespace BestRestaurants.Models
     {
         public int DinerId { get; set; }
         public string DinerName { get; set; }
-        public bool DinerAllergies { get; set; }
-        public DateTime Date { get; set; }
-        // public virtual Restaurant Restaurant { get; set; }
-        // public virtual Cuisine Cuisine { get; set; }
+        public bool NutAllergy { get; set; }
+        public bool DairyAllergy { get; set; }
+        public bool GlutenAllergy { get; set; }
     }
 }

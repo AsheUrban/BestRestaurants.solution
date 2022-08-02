@@ -1,14 +1,14 @@
-@{ 
+@{
   Layout = "_Layout";
-  }
-
+}
 
 @model BestRestaurants.Models.Diner
 
-<h1>ADD DINER</h1>
+<h1>EDIT DINER |  @Html.DisplayFor(model => model.DinerName)</h1>
 <hr />
 @using (Html.BeginForm())
 {
+@Html.HiddenFor(model => model.DinerId)
 @Html.Label("Name: ") 
 @Html.TextBoxFor(model => model.DinerName)
 <hr />
@@ -22,10 +22,6 @@
 <br>
 @Html.CheckBoxFor(m => m.GlutenAllergy)
 @Html.Label("| Gluten")
-@* <br>
-@Html.LabelFor(model => model.Restaurant)
-@Html.DropDownList("RestaurantId") *@
 <hr />
-  <input type="submit" value="ADD" class="fancyBtn2" />
+  <input type="submit" value="Save" />
 }
-

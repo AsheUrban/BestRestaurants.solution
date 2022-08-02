@@ -22,6 +22,22 @@ namespace BestRestaurants.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Diners",
+                columns: table => new
+                {
+                    DinerId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    DinerName = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    NutAllergy = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DairyAllergy = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    GlutenAllergy = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Diners", x => x.DinerId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Restaurants",
                 columns: table => new
                 {
@@ -76,6 +92,9 @@ namespace BestRestaurants.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CuisineRestaurants");
+
+            migrationBuilder.DropTable(
+                name: "Diners");
 
             migrationBuilder.DropTable(
                 name: "Cuisines");
