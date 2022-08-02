@@ -36,25 +36,25 @@ namespace BestRestaurants.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Diner",
+                name: "CuisineRestaurants",
                 columns: table => new
                 {
-                    DinerId = table.Column<int>(type: "int", nullable: false)
+                    CuisineRestaurantId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     RestaurantId = table.Column<int>(type: "int", nullable: false),
                     CuisineId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Diner", x => x.DinerId);
+                    table.PrimaryKey("PK_CuisineRestaurants", x => x.CuisineRestaurantId);
                     table.ForeignKey(
-                        name: "FK_Diner_Cuisines_CuisineId",
+                        name: "FK_CuisineRestaurants_Cuisines_CuisineId",
                         column: x => x.CuisineId,
                         principalTable: "Cuisines",
                         principalColumn: "CuisineId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Diner_Restaurants_RestaurantId",
+                        name: "FK_CuisineRestaurants_Restaurants_RestaurantId",
                         column: x => x.RestaurantId,
                         principalTable: "Restaurants",
                         principalColumn: "RestaurantId",
@@ -62,20 +62,20 @@ namespace BestRestaurants.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Diner_CuisineId",
-                table: "Diner",
+                name: "IX_CuisineRestaurants_CuisineId",
+                table: "CuisineRestaurants",
                 column: "CuisineId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Diner_RestaurantId",
-                table: "Diner",
+                name: "IX_CuisineRestaurants_RestaurantId",
+                table: "CuisineRestaurants",
                 column: "RestaurantId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Diner");
+                name: "CuisineRestaurants");
 
             migrationBuilder.DropTable(
                 name: "Cuisines");

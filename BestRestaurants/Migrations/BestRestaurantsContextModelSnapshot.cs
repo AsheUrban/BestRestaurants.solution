@@ -33,9 +33,9 @@ namespace BestRestaurants.Migrations
                     b.ToTable("Cuisines");
                 });
 
-            modelBuilder.Entity("BestRestaurants.Models.Diner", b =>
+            modelBuilder.Entity("BestRestaurants.Models.CuisineRestaurant", b =>
                 {
-                    b.Property<int>("DinerId")
+                    b.Property<int>("CuisineRestaurantId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -45,13 +45,13 @@ namespace BestRestaurants.Migrations
                     b.Property<int>("RestaurantId")
                         .HasColumnType("int");
 
-                    b.HasKey("DinerId");
+                    b.HasKey("CuisineRestaurantId");
 
                     b.HasIndex("CuisineId");
 
                     b.HasIndex("RestaurantId");
 
-                    b.ToTable("Diner");
+                    b.ToTable("CuisineRestaurants");
                 });
 
             modelBuilder.Entity("BestRestaurants.Models.Restaurant", b =>
@@ -71,7 +71,7 @@ namespace BestRestaurants.Migrations
                     b.ToTable("Restaurants");
                 });
 
-            modelBuilder.Entity("BestRestaurants.Models.Diner", b =>
+            modelBuilder.Entity("BestRestaurants.Models.CuisineRestaurant", b =>
                 {
                     b.HasOne("BestRestaurants.Models.Cuisine", "Cuisine")
                         .WithMany("JoinEntities")
