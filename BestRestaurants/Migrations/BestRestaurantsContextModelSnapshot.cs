@@ -86,10 +86,15 @@ namespace BestRestaurants.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int>("DinerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("RestaurantId");
+
+                    b.HasIndex("DinerId");
 
                     b.ToTable("Restaurants");
                 });
@@ -113,9 +118,25 @@ namespace BestRestaurants.Migrations
                     b.Navigation("Restaurant");
                 });
 
+            modelBuilder.Entity("BestRestaurants.Models.Restaurant", b =>
+                {
+                    b.HasOne("BestRestaurants.Models.Diner", "Diner")
+                        .WithMany("Restaurants")
+                        .HasForeignKey("DinerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Diner");
+                });
+
             modelBuilder.Entity("BestRestaurants.Models.Cuisine", b =>
                 {
                     b.Navigation("JoinEntities");
+                });
+
+            modelBuilder.Entity("BestRestaurants.Models.Diner", b =>
+                {
+                    b.Navigation("Restaurants");
                 });
 
             modelBuilder.Entity("BestRestaurants.Models.Restaurant", b =>

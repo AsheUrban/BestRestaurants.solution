@@ -8,18 +8,22 @@
 
 <h2>Diner Details</h2>
 <hr />
+
 <p><strong>@Html.DisplayNameFor(model => model.DinerName): </strong> @Html.DisplayFor(model => model.DinerName)</p>
 <hr />
+
 <p><strong>Allergies: </strong></p>
 <p>@Html.Label("Nuts") @Html.DisplayFor(model => model.NutAllergy)</p>
 <p>@Html.Label("Dairy") @Html.DisplayFor(model => model.DairyAllergy)</p>
 <p>@Html.Label("Gluten") @Html.DisplayFor(model => model.GlutenAllergy)</p>
 <hr />
 
-@* @foreach (Restaurant restaurant in Model.Restaurants)
+<p><strong>Your Restaurant Wish List: </strong></p>
+
+@foreach (Restaurant restaurant in Model.Restaurants)
 {
   <li>@Html.ActionLink($"{restaurant.Name}", "Details", "Restaurants", new { id = restaurant.RestaurantId })</li>
-} *@
+}
 
 <hr />
 <p class="fancyBtn">@Html.ActionLink("Create Diner", "Create", new { id = Model.DinerId})</p>

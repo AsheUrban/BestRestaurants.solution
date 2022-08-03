@@ -13,5 +13,8 @@ namespace BestRestaurants.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public virtual ICollection<CuisineRestaurant> JoinEntities { get; }
+
+        public virtual int DinerId { get; set; }
+        public virtual Diner Diner { get; set; }
     }
 }

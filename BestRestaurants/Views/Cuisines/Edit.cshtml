@@ -9,7 +9,7 @@
 <hr />
 @using (Html.BeginForm())
 {
-  <span> | </span> @Html.HiddenFor(model => model.CuisineId) <span> | </span> 
+   @Html.HiddenFor(model => model.CuisineId)
 
   @Html.LabelFor(model => model.Type) <span> | </span> 
   @Html.EditorFor(model => model.Type) <span> | </span> 

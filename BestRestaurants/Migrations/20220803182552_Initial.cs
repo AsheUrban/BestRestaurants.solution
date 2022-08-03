@@ -44,11 +44,18 @@ namespace BestRestaurants.Migrations
                     RestaurantId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Description = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                    Description = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    DinerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Restaurants", x => x.RestaurantId);
+                    table.ForeignKey(
+                        name: "FK_Restaurants_Diners_DinerId",
+                        column: x => x.DinerId,
+                        principalTable: "Diners",
+                        principalColumn: "DinerId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -86,6 +93,11 @@ namespace BestRestaurants.Migrations
                 name: "IX_CuisineRestaurants_RestaurantId",
                 table: "CuisineRestaurants",
                 column: "RestaurantId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Restaurants_DinerId",
+                table: "Restaurants",
+                column: "DinerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -94,13 +106,13 @@ namespace BestRestaurants.Migrations
                 name: "CuisineRestaurants");
 
             migrationBuilder.DropTable(
-                name: "Diners");
-
-            migrationBuilder.DropTable(
                 name: "Cuisines");
 
             migrationBuilder.DropTable(
                 name: "Restaurants");
+
+            migrationBuilder.DropTable(
+                name: "Diners");
         }
     }
 }
