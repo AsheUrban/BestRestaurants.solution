@@ -9,6 +9,10 @@ Things currently BUGGING me:
 * _Want a background image._
 * _Add ActionLink to restaurant list on Cuisine details._
 
+* _Edit Restaurant doesn't work. This may be an issue of trying to connect two tables, one of which is already joined. Error message reads:_
+
+<!-- MySqlException: Cannot add or update a child row: a foreign key constraint fails (`best_restaurants`.`restaurants`, CONSTRAINT `FK_Restaurants_Diners_DinerId` FOREIGN KEY (`DinerId`) REFERENCES `diners` (`DinerId`) ON DELETE CASCADE) -->
+
 A few things I LEARNED:
 * _Name your join table after the tables you're joining. No seriously. We tried to make this a "usuable object" for the Diner, but you end up creating a Diner every time you associate a Cuisine and a Restaurant. Keep join tables separate for the most part, anyway._
 

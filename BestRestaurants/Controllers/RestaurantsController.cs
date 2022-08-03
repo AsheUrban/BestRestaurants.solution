@@ -52,18 +52,28 @@ namespace BestRestaurants.Controllers
 
     public ActionResult Edit(int id)
     {
-    var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+    Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+
     ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Type", "Description");
+    ViewBag.DinerId = new SelectList(_db.Diners, "DinerId", "DinerName");
     return View(thisRestaurant);
     }
 
+    // NO IDEA how to post edits for restaurant now that we've added DinerId - dropdown.
+
     [HttpPost]
-    public ActionResult Edit(Restaurant restaurant, int CuisineId)
+    public ActionResult Edit(Restaurant restaurant, int CuisineId, int DinerId)
     {
       if (CuisineId != 0)
       {
-      _db.CuisineRestaurants.Add(new CuisineRestaurant() { CuisineId = CuisineId, RestaurantId = restaurant.RestaurantId });
+        _db.CuisineRestaurants.Add(new CuisineRestaurant() { CuisineId = CuisineId, RestaurantId = restaurant.RestaurantId });
       }
+
+      if (DinerId != 0)
+      {
+        _db.Diners.Add(new Diner () { DinerId = DinerId, RestaurantId = restaurant.RestaurantId});
+      }
+      
     _db.Entry(restaurant).State = EntityState.Modified;
     _db.SaveChanges();
     return RedirectToAction("Index");

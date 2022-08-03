@@ -2,6 +2,7 @@
   Layout = "_Layout";
 }
 
+@using BestRestaurants.Models;
 @model BestRestaurants.Models.Restaurant
 
 <h1>EDIT RESTAURANT |  @Html.DisplayFor(model => model.Name)</h1>
@@ -16,8 +17,8 @@
   @Html.LabelFor(model => model.Description) <span> | </span> 
   @Html.TextBoxFor(model => model.Description) <span> | </span> 
 
-  @* @Html.Label("Select Cuisine") <span> | </span> 
-  @Html.DropDownList("CuisineId") <span> | </span>  *@
+  @Html.Label("Select Cuisine") <span> | </span> 
+  @Html.DropDownList("CuisineId") <span> | </span> 
 <hr />
   <input type="submit" value="Save" />
 }

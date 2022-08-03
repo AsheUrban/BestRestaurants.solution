@@ -15,6 +15,7 @@ namespace BestRestaurants.Models
     public bool NutAllergy { get; set; }
     public bool DairyAllergy { get; set; }
     public bool GlutenAllergy { get; set; }
+    public virtual int RestaurantId { get; set; }
     public virtual ICollection<Restaurant> Restaurants { get; set; }
   }
 }
